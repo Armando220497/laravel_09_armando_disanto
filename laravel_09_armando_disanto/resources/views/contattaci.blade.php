@@ -15,7 +15,7 @@
                 @endif
 
 
-                <form class="shadow-lg" action="{{ route('sendMessage') }}" method="POST">
+                <form enctype="multipart/form-data" class="shadow-lg" action="{{ route('sendMessage') }}" method="POST">
                     @csrf
 
                     <!-- Campo email -->
@@ -44,6 +44,15 @@
                         <textarea class="form-control" name="message" id="message" rows="4" placeholder="Inserisci il tuo messaggio"
                             required></textarea>
                     </div>
+
+                    {{-- Campo file --}}
+
+                    <div class="mb-3">
+                        <label class="form-label text-light fw-bold">File</label>
+                        <input type="file" name="img" class="form-control" id="img">
+                    </div>
+
+
 
                     <button type="submit" class="btn btn-primary">Invia</button>
                 </form>

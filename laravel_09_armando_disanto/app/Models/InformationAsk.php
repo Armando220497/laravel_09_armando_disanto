@@ -15,5 +15,6 @@ class InformationAsk extends Model
         'number',
         'name',
         'message',
+        'img',
     ];
 }

@@ -15,7 +15,15 @@ class InformationAskController extends Controller
             'number' => 'required|string|max:15',
             'name' => 'required|string|max:255',
             'message' => 'required|string',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        // Salvataggio del file immagine
+        $imagePath = null;
+        if ($request->hasFile('img')) {
+            $imagePath = $request->file('img')->store('public/img'); // Salva in 'public/img'
+        }
+
 
         // Salvataggio nel database
         InformationAsk::create([
@@ -23,6 +31,7 @@ class InformationAskController extends Controller
             'number' => $request->number,
             'name' => $request->name,
             'message' => $request->message,
+            'img' => $imagePath, // Salva il percorso dell'immagine nel DB
         ]);
 
 
