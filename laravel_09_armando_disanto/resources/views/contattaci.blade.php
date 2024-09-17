@@ -14,6 +14,16 @@
                     </div>
                 @endif
 
+                <!-- Visualizzazione dei messaggi di errore di validazione -->
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <form enctype="multipart/form-data" class="shadow-lg" action="{{ route('sendMessage') }}" method="POST">
                     @csrf
@@ -45,14 +55,11 @@
                             required></textarea>
                     </div>
 
-                    {{-- Campo file --}}
-
+                    <!-- Campo file -->
                     <div class="mb-3">
                         <label class="form-label text-light fw-bold">File</label>
                         <input type="file" name="img" class="form-control" id="img">
                     </div>
-
-
 
                     <button type="submit" class="btn btn-primary">Invia</button>
                 </form>
